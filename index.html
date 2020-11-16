@@ -11,13 +11,13 @@
     <h3>소제목 ???</h3>
 
     <button id="web_btn" type="button"  onclick="init()">Webcam_ON</button>
-    <button id ="vsbtn" type="button"  onclick="versus_start()" style="display: none;">배틀 스타트</button>
+    <button id ="vsbtn" type="button"  onclick="versus_start()" style="display: none; margin-left:5%;">배틀 스타트</button>
     
     <div id="countDown"></div>
     
     <div class="fcontain">
-        <div id="webcam-container"></div>
-        <div id="random_Output">ai 가위바위보 사진 출력</div>
+        <div id="webcam-container" style="margin-left: 5%; margin-right:3%"></div>
+        <div id="random_Output" style="margin-left:3%;">ai 가위바위보 사진 출력</div>
     </div>
 
     <div class="fcontain">
@@ -149,9 +149,6 @@
             document.getElementById("webcam-container").appendChild(webcam.canvas);
             labelContainer = document.getElementById("label-container");
             desc = document.getElementById("desc");
-            for (let i = 0; i < maxPredictions; i++) { // and class labels
-                labelContainer.appendChild(document.createElement("div"));
-            }
         }
 
         async function loop() {
@@ -166,7 +163,16 @@
                 img_state[i] = prediction[i].probability;
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                labelContainer.childNodes[i].innerHTML = classPrediction;
+                    if (prediction[0] > 0.85){
+                        labelContainer.innerHTML="내가 내고있는 것: 가위"
+                    }
+                    else if (prediction[1] > 0.85){
+                        labelContainer.innerHTML="내가 내고있는 것: 바위"
+                    }
+                    else if (prediction[2] > 0.85){
+                        labelContainer.innerHTML="내가 내고있는 것: 보"
+                    }
+                    else labelContainer.innerHTML="특정불가"
             }
         }
     </script>
