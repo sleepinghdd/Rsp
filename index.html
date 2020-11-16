@@ -22,7 +22,7 @@
 
     <div class="fcontain">
         <div>
-            <button class="reward" type="button" onclick="print_reward()" style="display: none;">보상 뽑기</button>
+            <button class="reward" id="reward_btn" type="button" onclick="print_reward()" style="display: none;">보상 뽑기</button>
         </div>
         <div class="reward" id="reward_desc" style="margin-left: 10%; display:none;" >버튼을 눌러 보상을 출력하세요</div>
     </div>
@@ -41,6 +41,7 @@
         var rand_image_contain = document.getElementById("random_Output");
         var reward_cls = document.getElementsByClassName("reward");
         var reward_desc = document.getElementById("reward_desc");
+        var reward_btn = document.getElementById("reward_btn");
         var img_state = [];
         var user_state;
         var pc_state
@@ -48,9 +49,9 @@
         var game_state;
 
         function print_reward(){
-            
+            reward_btn.style.disabled = "disabled";
+            reward_btn.innerHTML = "이미 뽑음";
             var resel = Math.floor(Math.random()*3);
-            alert(resel);
             if (resel==0) reward_desc.innerHTML = "보상 1번";
             else if(resel==1) reward_desc.innerHTML ="보상2번";
             else if(resel==2) reward_desc.innerHTML = "꽝 3번";
