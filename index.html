@@ -22,9 +22,9 @@
 
     <div class="fcontain">
         <div>
-            <button id="reward" type="button" onclick="print_reward()" style="display: none;">보상 뽑기</button>
+            <button class="reward" type="button" onclick="print_reward()" style="display: none;">보상 뽑기</button>
         </div>
-        <div id="reward" style="margin-left: 10%; display:none;" >버튼을 눌러 보상을 출력하세요</div>
+        <div class="reward" id="reward_desc" style="margin-left: 10%; display:none;" >버튼을 눌러 보상을 출력하세요</div>
     </div>
     <div id="label-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -39,7 +39,8 @@
         var vsbtn = document.getElementById("vsbtn")
         var count_contain = document.getElementById("countDown");
         var rand_image_contain = document.getElementById("random_Output");
-        var reward_id = document.querySelectorAll.getElementById("reward");
+        var reward_cls = document.getElementsByClassName("reward");
+        var reward_desc = document.getElementById("reward_desc");
         var img_state = [];
         var user_state;
         var pc_state
@@ -49,7 +50,6 @@
         function print_reward(){
             
             var resel = Math.floor(Math.random*3);
-            reward_desc
             if (resel==0) reward_desc.innerHTML = "보상 1번";
             else if(resel==1) reward_desc.innerHTML ="보상2번";
             else if(resel==2) reward_desc.innerHTML = "꽝 3번";
@@ -94,7 +94,7 @@
             if (game_state == 1){
                 count_contain.innerHTML= "이김";
                 alert("승리 보상을 뽑으세요");
-                reward_id.style.display = "block";
+                reward_cls.style.display = "block";
             }
             else if(game_state == 0){
                 count_contain.innerHTML= "비김";
