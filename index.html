@@ -93,7 +93,8 @@
 
             if (game_state == 1){
                 count_contain.innerHTML= "이김";
-                reward_cls.style.display = "block";
+                reward_cls[0].style.display="block";
+                reward_cls[1].style.display="block";
             }
             else if(game_state == 0){
                 count_contain.innerHTML= "비김";
