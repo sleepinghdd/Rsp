@@ -17,6 +17,7 @@
     
     <div class="fcontain">
         <div id="webcam-container" style="margin-left: 5%; margin-right:3%"></div>
+        <div id="vs_text" style="font-size:20px;">vs</div>
         <div id="random_Output" style="margin-left:3%;">ai 가위바위보 사진 출력</div>
     </div>
 
@@ -163,13 +164,13 @@
                 img_state[i] = prediction[i].probability;
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                    if (prediction[0] > 0.85){
+                    if (prediction[0].probability > 0.85){
                         labelContainer.innerHTML="내가 내고있는 것: 가위"
                     }
-                    else if (prediction[1] > 0.85){
+                    else if (prediction[1].probability > 0.85){
                         labelContainer.innerHTML="내가 내고있는 것: 바위"
                     }
-                    else if (prediction[2] > 0.85){
+                    else if (prediction[2].probability > 0.85){
                         labelContainer.innerHTML="내가 내고있는 것: 보"
                     }
                     else labelContainer.innerHTML="특정불가"
