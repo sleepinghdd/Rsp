@@ -39,7 +39,7 @@
         var vsbtn = document.getElementById("vsbtn")
         var count_contain = document.getElementById("countDown");
         var rand_image_contain = document.getElementById("random_Output");
-        var reward_id = document.getElementById("reward");
+        var reward_id = document.querySelectorAll.getElementById("reward");
         var img_state = [];
         var user_state;
         var pc_state
@@ -49,22 +49,21 @@
         function print_reward(){
             
             var resel = Math.floor(Math.random*3);
+            reward_desc
             if (resel==0) reward_desc.innerHTML = "보상 1번";
-            else if(resel==0) reward_desc.innerHTML ="보상2번";
-            else if(resel==0) reward_desc.innerHTML = "꽝 3번";
+            else if(resel==1) reward_desc.innerHTML ="보상2번";
+            else if(resel==2) reward_desc.innerHTML = "꽝 3번";
         }
 
         function compare(){
             var web_state = [Math.floor(Math.random()*3),Math.floor(Math.random()*3)];
-            alert (web_state[0]);
-            
+
             for(var i=0;i<3;i++){
                 if (img_state[i] > 0.85){
                     user_state = i;
                     break;
                 }
             }
-            alert(user_state); //de
             
             game_state=999;
             for(var i=0;i<2;i++){
