@@ -49,7 +49,7 @@
 
         function print_reward(){
             
-            var resel = Math.floor(Math.random*3);
+            var resel = Math.floor(Math.random()*3);
             alert(resel);
             if (resel==0) reward_desc.innerHTML = "보상 1번";
             else if(resel==1) reward_desc.innerHTML ="보상2번";
@@ -102,7 +102,7 @@
                 count_contain.innerHTML= "비김";
             }
             else if(game_state == -1){
-                count_contain.innerHTML="잠";
+                count_contain.innerHTML="졌음 ㅋ";
             }
             else alert("뭔가 에러남");
 
