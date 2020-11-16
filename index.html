@@ -11,9 +11,9 @@
     <h3>소제목 ???</h3>
 
     <button id="web_btn" type="button"  onclick="init()">Webcam_ON</button>
-    <button id ="vsbtn" type="button"  onclick="versus_start()"></button>
+    <button id ="vsbtn" type="button"  onclick="versus_start()">배틀 스타트</button>
     
-    <div id="countDown">012</div>
+    <div id="countDown"></div>
     
     <div class="fcontain">
         <div id="webcam-container">web cam</div>
@@ -115,7 +115,7 @@
 
         function versus_start(){
             var vsbtn = document.getElementById(vsbtn);
-            vsbtn.disable = "disabled";
+            vsbtn.style.disable = "disabled";
             count = 3;
             for(var i=1; i<=4; i++){
               setTimeout("CountDown()",i*1100);
