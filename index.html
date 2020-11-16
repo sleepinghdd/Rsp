@@ -55,15 +55,17 @@
         }
 
         function compare(rand){
-            alert(count);
-            alert("비교 진입");
             var web_state = [Math.floor(Math.random()*3),Math.floor(Math.random()*3)];
+            alert (web_state[0]);
+            
             for(var i=0;i<3;i++){
                 if (img_state[i] > 0.85){
                     user_state = i;
                     break;
                 }
             }
+            alert(user_state); //de
+            
             game_state=999;
             for(var i=0;i<2;i++){
                 if( (web_state[i]==1 && user_state==0)||(web_state[i]==2 && user_state==1)||(web_state[i]==0 && user_state==2) ){
@@ -110,7 +112,7 @@
 
         function CountDown(){
             count_contain.innerHTML = count;
-            setTimeout(function(){count--},200);
+            setTimeout(function(){count--},350);
             if (count == 0){
                 compare();
             }
