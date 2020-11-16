@@ -108,8 +108,8 @@
 
         function CountDown(){
             count_contain.innerHTML = count;
-            counter--;
-            if (counter == 0){
+            count--;
+            if (count == 0){
                 compare();
             }
         }
@@ -125,7 +125,7 @@
         async function init() {
             var start_button = document.getElementById("web_btn");
             start_button.style.display = "none";
-            setTimeout(function(){vsbtn.style.display = "block"},1000);
+            setTimeout(function(){vsbtn.style.display = "block"},3000);
             
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
