@@ -50,9 +50,11 @@
         function print_reward(){
             
             var resel = Math.floor(Math.random*3);
+            alert(resel);
             if (resel==0) reward_desc.innerHTML = "보상 1번";
             else if(resel==1) reward_desc.innerHTML ="보상2번";
             else if(resel==2) reward_desc.innerHTML = "꽝 3번";
+            else reward_desc.innerHTML = "뭔가 안됨";
         }
 
         function compare(){
