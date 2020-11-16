@@ -93,7 +93,6 @@
 
             if (game_state == 1){
                 count_contain.innerHTML= "이김";
-                alert("승리 보상을 뽑으세요");
                 reward_cls.style.display = "block";
             }
             else if(game_state == 0){
@@ -104,7 +103,7 @@
             }
             else alert("뭔가 에러남");
 
-
+            vsbtn.style.display="block";
         }
 
         function CountDown(){
