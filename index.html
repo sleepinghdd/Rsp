@@ -49,7 +49,7 @@
         var game_state;
 
         function print_reward(){
-            reward_btn.style.disabled = "disabled";
+            reward_btn.disabled = "disabled";
             reward_btn.innerHTML = "이미 뽑음";
             var resel = Math.floor(Math.random()*3);
             if (resel==0) reward_desc.innerHTML = "보상 1번";
@@ -88,9 +88,9 @@
                 }
             }
             
-            if (pc_state == 0) rand_image_contain.innerHTML = "<img src='scissor.jpg'>";
-            else if(pc_state == 1) rand_image_contain.innerHTML = "<img src='rock.jpg'>";
-            else if(pc_state == 2) rand_image_contain.innerHTML = "<img src='paper.jpg'>";
+            if (pc_state == 0) rand_image_contain.innerHTML = "<img src='./img/scissor.jpg'>";
+            else if(pc_state == 1) rand_image_contain.innerHTML = "<img src='./img/rock.jpg'>";
+            else if(pc_state == 2) rand_image_contain.innerHTML = "<img src='./img/paper.jpg'>";
             else alert("사진 에러남");
             
 
@@ -119,6 +119,7 @@
         }
 
         function versus_start(){
+            rand_image_contain.innerHTML="<img src='./img/stay.jpg'>"
             vsbtn.style.display = "none";
             count = 3;
             for(var i=1; i<=4; i++){
