@@ -16,7 +16,7 @@
     <div id="countDown"></div>
     
     <div class="fcontain">
-        <div id="webcam-container">web cam</div>
+        <div id="webcam-container"></div>
         <div id="random_Output">ai 가위바위보 사진 출력</div>
     </div>
 
@@ -115,7 +115,7 @@
 
         function versus_start(){
             var vsbtn = document.getElementById(vsbtn);
-            vsbtn.style.disable = "disabled";
+            vsbtn.style.display = "none";
             count = 3;
             for(var i=1; i<=4; i++){
               setTimeout("CountDown()",i*1100);
@@ -124,7 +124,7 @@
 
         async function init() {
             var start_button = document.getElementById("web_btn");
-            start_button.disable = "disabled";
+            start_button.style.display = "none";
             
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
