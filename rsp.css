@@ -1,0 +1,18 @@
+.vs{
+  display: inline-block;
+}
+.fcontain{
+  display: flex;
+}
+
+#webcam-container{
+  margin-left: 10px;
+  margin-right: 5px;
+}
+#random_Output{
+  margin-left: 5px;
+}
+#countDown{
+  margin-left: 315px;
+  font-size:40px;
+}
