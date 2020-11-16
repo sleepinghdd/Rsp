@@ -11,7 +11,7 @@
     <h3>소제목 ???</h3>
 
     <button id="web_btn" type="button"  onclick="init()">Webcam_ON</button>
-    <button id ="vsbtn" type="button"  onclick="versus_start()">배틀 스타트</button>
+    <button id ="vsbtn" type="button"  onclick="versus_start()" style="display: none;">배틀 스타트</button>
     
     <div id="countDown"></div>
     
@@ -36,6 +36,7 @@
 
         var prediction;
         let model, webcam, maxPredictions;
+        var vsbtn = document.getElementById("vsbtn")
         var count_contain = document.getElementById("countDown");
         var rand_image_contain = document.getElementById("random_Output");
         var reward_id = document.getElementById("reward");
@@ -114,7 +115,6 @@
         }
 
         function versus_start(){
-            var vsbtn = document.getElementById(vsbtn);
             vsbtn.style.display = "none";
             count = 3;
             for(var i=1; i<=4; i++){
@@ -125,6 +125,7 @@
         async function init() {
             var start_button = document.getElementById("web_btn");
             start_button.style.display = "none";
+            setTimeout(function(){vsbtn.style.display = "block"},1000);
             
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
