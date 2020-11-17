@@ -9,13 +9,7 @@
   flex: 1 1 0;
 }
 
-#webcam-container{
-  margin-left: 10px;
-  margin-right: 5px;
-}
-#random_Output{
-  margin-left: 5px;
-}
+
 #countDown{
   font-size:40px;
 }
