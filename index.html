@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="rsp.css">
-    <title>가위바위보 (가명)</title>
+    <title>가위바위보</title>
 </head>
 
 <body>
-    <h1 style="text-align: center;">뭔가 제목 들어 갈거임</h1>
-    <h3>소제목 ???</h3>
+    <h1 style="text-align: center;">가위 바위 보</h1>
+    <h3>승리시 보상있음</h3>
 
     <button id="web_btn" type="button"  onclick="init()">Webcam_ON</button>
-    <button id ="vsbtn" type="button"  onclick="versus_start()" style="display: none; margin-left:5%;">스타트</button>
+    <button id ="vsbtn" type="button"  onclick="versus_start()" style="align-content: center;">스타트</button>
     
     <div id="countDown" style="text-align: center;"></div>
     
@@ -65,7 +65,7 @@
             var web_state = [Math.floor(Math.random()*3),Math.floor(Math.random()*3)];
 
             for(var i=0;i<3;i++){
-                if (img_state[i] > 0.85){
+                if (img_state[i] > 0.75){
                     user_state = i;
                     break;
                 }
@@ -169,13 +169,13 @@
                 img_state[i] = prediction[i].probability;
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                    if (prediction[0].probability > 0.85){
+                    if (prediction[0].probability > 0.75){
                         labelContainer.innerHTML="내가 내고있는 것: 가위"
                     }
-                    else if (prediction[1].probability > 0.85){
+                    else if (prediction[1].probability > 0.75){
                         labelContainer.innerHTML="내가 내고있는 것: 바위"
                     }
-                    else if (prediction[2].probability > 0.85){
+                    else if (prediction[2].probability > 0.75){
                         labelContainer.innerHTML="내가 내고있는 것: 보"
                     }
                     else labelContainer.innerHTML="특정불가"
