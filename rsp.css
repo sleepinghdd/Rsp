@@ -12,14 +12,12 @@
 .fcontain2{
   display: flex;
 }
-.fitem2:nth:child(1){
+.reward:nth:child(1){
   flex: 1 1 0;
 }
-.fitem2:nth:child(2){
+.reward:nth:child(2){
   flex: 3 1 0;
 }
-
-
 #countDown{
   font-size:40px;
 }
