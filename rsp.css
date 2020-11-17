@@ -2,6 +2,7 @@
   display: inline-block;
 }
 .fcontain{
+  justify-content: center;
   display: flex;
 }
 
