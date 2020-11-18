@@ -135,8 +135,8 @@
 
         async function init() {
             var start_button = document.getElementById("web_btn");
-            start_button.style.display = "flex";
-            setTimeout(function(){vsbtn.style.display = "block"},5000);
+            start_button.style.display = "none";
+            setTimeout(function(){vsbtn.style.display = "flex"},5000);
             
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
