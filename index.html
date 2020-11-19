@@ -6,7 +6,7 @@
     <title>가위바위보</title>
 </head>
 
-<body id="key_inp" onkeyup="key_check()">
+<body id="key_inp" onkeyup="">
     <h1 style="text-align: center;">가위 바위 보</h1>
     <h3>승리시 보상있음 #(SPACE)키를 누르면 시작됨#</h3>
 
@@ -55,7 +55,7 @@
 
         function key_check(){
             var key = event.keyCode
-            alert(key)
+            if(key==32) versus_start();
         }
 
         function print_reward(){
@@ -129,11 +129,12 @@
         }
 
         function versus_start(){
+            vsbtn.onkeyup = "";
             vsText.style.display = "table"
             reward_cls[0].style.display = "none"
             reward_cls[1].style.display = "none"
             rand_image_contain.innerHTML="<img src='./img/stay.jpg'>"
-            vsbtn.onkeyup = "";
+            
             count = 3;
             for(var i=1; i<=4; i++){
               setTimeout("CountDown()",i*1000);
@@ -143,6 +144,7 @@
         async function init() {
             var start_button = document.getElementById("web_btn");
             start_button.style.display = "none";
+            vsbtn.onkeyup="key_check()";
             
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
