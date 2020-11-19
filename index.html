@@ -155,7 +155,204 @@
             const flip = true;
             webcam = new tmImage.Webcam(450, 450, flip); // width, height, flip
             await webcam.setup();
+            await webcam.play();<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="rsp.css">
+    <title>가위바위보</title>
+</head>
+
+<body id="key_inp" onkeyup="">
+    <h1 style="text-align: center;">가위 바위 보</h1>
+    <h3>승리시 보상있음 #(SPACE)키를 누르면 시작됨#</h3>
+
+    <button id="web_btn" type="button"  onclick="init()">Webcam_ON</button>
+    
+    
+    <div id="countDown" style="text-align: center;"></div>
+    
+    <div class="fcontain">
+        <div class="fitem" id="webcam-container" style="margin-left: 10%;"></div>
+        <div class="fitem" id="vs_text" style="font-size:30px; display: none;">
+            <div style="display:table-cell; vertical-align:middle">vs</div>
+        </div>
+        <div class="fitem" id="random_Output"></div>
+    </div>
+    
+    <div style="display:flex;">
+        <button id ="vsbtn" type="button"  onclick="versus_start()" style="display:none; font-size:30px; padding:10px 10px; justify-content: center;">스타트</button>
+    </div>
+    
+    <div class="fcontain2">
+        <div>
+            <button class="reward" id="reward_btn" type="button" onclick="print_reward()" style="display: none;">보상 뽑기</button>
+        </div>
+        <div class="reward" id="reward_desc" style="margin-left: 10%; display:none;" >버튼을 눌러 보상을 출력하세요</div>
+    </div>
+    <div id="label-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        // 가위 0  바위 1  보 2
+        const reward_count = 3;
+        const URL = "./source/";
+
+        var prediction;
+        let model, webcam, maxPredictions, labelContainer;
+        var vsbtn = document.getElementById("key_inp");
+        var vsText = document.getElementById("vs_text");
+        var count_contain = document.getElementById("countDown");
+        var rand_image_contain = document.getElementById("random_Output");
+        var reward_cls = document.getElementsByClassName("reward");
+        var reward_desc = document.getElementById("reward_desc");
+        var reward_btn = document.getElementById("reward_btn");
+        
+        var img_state = [];
+        var user_state;
+        var pc_state
+        var count;
+        var game_state;
+
+        function key_check(){
+            var key = event.KeyCode
+            alert(key)
+        }
+
+        function print_reward(){
+            reward_btn.disabled = "disabled";
+            reward_btn.innerHTML = "이미 뽑음";
+            var resel = Math.floor(Math.random()*3);
+            if (resel==0) reward_desc.innerHTML = "보상 1번";
+            else if(resel==1) reward_desc.innerHTML ="보상2번";
+            else if(resel==2) reward_desc.innerHTML = "꽝 3번";
+            else reward_desc.innerHTML = "뭔가 안됨";
+        }
+
+        function compare(){
+            var web_state = [Math.floor(Math.random()*3),Math.floor(Math.random()*3)];
+
+            for(var i=0;i<3;i++){
+                if (img_state[i] > 0.75){
+                    user_state = i;
+                    break;
+                }
+            }
+            
+            game_state=999;
+            for(var i=0;i<2;i++){
+                if( (web_state[i]==1 && user_state==0)||(web_state[i]==2 && user_state==1)||(web_state[i]==0 && user_state==2) ){
+                    pc_state = web_state[i];
+                    game_state = -1;
+                    break;
+                }
+                else if (web_state[i] == user_state){
+                    pc_state = web_state[i];
+                    game_state = 0;
+                    continue;
+                }
+                else if ((web_state[i]==0 && user_state==1)||(web_state[i]==1 && user_state==2)||(web_state[i]==2 && user_state==0)){
+                    if (game_state == 0) break
+                    pc_state = web_state[i];
+                    game_state = 1;
+                    continue;
+                }
+            }
+            
+            if (pc_state == 0) rand_image_contain.innerHTML = "<img src='./img/scissor.png'>";
+            else if(pc_state == 1) rand_image_contain.innerHTML = "<img src='./img/rock.png'>";
+            else if(pc_state == 2) rand_image_contain.innerHTML = "<img src='./img/paper.png'>";
+            else alert("사진 에러남");
+            
+
+            if (game_state == 1){
+                count_contain.innerHTML= "이김";
+                reward_cls[0].style.display="block";
+                reward_cls[1].style.display="block";
+            }
+            else if(game_state == 0){
+                count_contain.innerHTML= "비김";
+            }
+            else if(game_state == -1){
+                count_contain.innerHTML="졌음 ㅋ";
+            }
+            else alert("뭔가 에러남");
+
+            vsbtn.onkeyup="key_check()";
+        }
+
+        function CountDown(){
+            count_contain.innerHTML = count;
+            setTimeout(function(){count--},200);
+            if (count == 0){
+                compare();
+            }
+        }
+
+        function versus_start(){
+            vsText.style.display = "table"
+            reward_cls[0].style.display = "none"
+            reward_cls[1].style.display = "none"
+            rand_image_contain.innerHTML="<img src='./img/stay.jpg'>"
+            vsbtn.onkeyup = "";
+            count = 3;
+            for(var i=1; i<=4; i++){
+              setTimeout("CountDown()",i*1000);
+            }
+        }
+
+        async function init() {
+            var start_button = document.getElementById("web_btn");
+            start_button.style.display = "none";
+            setTimeout(function(){vsbtn.onkeyup="key_check"},5000);
+            
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+
+
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+
+
+            const flip = true;
+            webcam = new tmImage.Webcam(450, 450, flip); // width, height, flip
+            await webcam.setup();
             await webcam.play();
+            window.requestAnimationFrame(loop);
+
+            document.getElementById("webcam-container").appendChild(webcam.canvas);
+            labelContainer = document.getElementById("label-container");
+            desc = document.getElementById("desc");
+        }
+
+        async function loop() {
+            webcam.update();
+            await predict();
+            window.requestAnimationFrame(loop);
+        }
+
+        async function predict() {
+            prediction = await model.predict(webcam.canvas);
+            for (let i = 0; i < maxPredictions; i++) {
+                img_state[i] = prediction[i].probability;
+                const classPrediction =
+                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                    if (prediction[0].probability > 0.75){
+                        labelContainer.innerHTML="내가 내고있는 것: 가위"
+                    }
+                    else if (prediction[1].probability > 0.75){
+                        labelContainer.innerHTML="내가 내고있는 것: 바위"
+                    }
+                    else if (prediction[2].probability > 0.75){
+                        labelContainer.innerHTML="내가 내고있는 것: 보"
+                    }
+                    else labelContainer.innerHTML="특정불가"
+            }
+        }
+    </script>
+
+</body>
+</html>
             window.requestAnimationFrame(loop);
 
             document.getElementById("webcam-container").appendChild(webcam.canvas);
