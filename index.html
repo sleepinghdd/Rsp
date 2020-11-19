@@ -17,10 +17,14 @@
     
     <div class="fcontain">
         <div class="fitem" id="webcam-container" style="margin-left: 10%;"></div>
-        <div class="fitem" id="vs_text" style="font-size:30px; display: none; align-items: center; align-texts: center;">vs</div>
+        <div class="fitem" id="vs_text" style="font-size:30px; display: none;"><div style="display:table-cell; vertical-align:middle">vs<div></div>
         <div class="fitem" id="random_Output"></div>
     </div>
-    <button id ="vsbtn" type="button"  onclick="versus_start()" style="display:none; font-size:30px; padding:10px 10px; justify-content: center;">스타트</button>
+    
+    <div style="display:flex;">
+        <button id ="vsbtn" type="button"  onclick="versus_start()" style="display:none; font-size:30px; padding:10px 10px; justify-content: center;">스타트</button>
+    </div>
+    
     <div class="fcontain2">
         <div>
             <button class="reward" id="reward_btn" type="button" onclick="print_reward()" style="display: none;">보상 뽑기</button>
@@ -122,7 +126,7 @@
         }
 
         function versus_start(){
-            vsText.style.display = "block"
+            vsText.style.display = "table"
             reward_cls[0].style.display = "none"
             reward_cls[1].style.display = "none"
             rand_image_contain.innerHTML="<img src='./img/stay.jpg'>"
@@ -136,7 +140,7 @@
         async function init() {
             var start_button = document.getElementById("web_btn");
             start_button.style.display = "none";
-            setTimeout(function(){vsbtn.style.display = "flex"},5000);
+            setTimeout(function(){vsbtn.style.display = "block"},5000);
             
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
