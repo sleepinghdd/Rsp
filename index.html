@@ -17,10 +17,10 @@
     
     <div class="fcontain">
         <div class="fitem" id="webcam-container" style="margin-left: 10%;"></div>
-        <div class="fitem" id="vs_text" style="vertical-align: middle; font-size:30px; display: none;">vs</div>
+        <div class="fitem" id="vs_text" style="font-size:30px; display: none; align-items: center;">vs</div>
         <div class="fitem" id="random_Output"></div>
     </div>
-    <button id ="vsbtn" type="button"  onclick="versus_start()" style="align-content: center; display:none; font-size:30px; padding:10px 10px; float:right; margin-right:15%">스타트</button>
+    <button id ="vsbtn" type="button"  onclick="versus_start()" style="display:none; font-size:30px; padding:10px 10px; justify-content: center;">스타트</button>
     <div class="fcontain2">
         <div>
             <button class="reward" id="reward_btn" type="button" onclick="print_reward()" style="display: none;">보상 뽑기</button>
@@ -136,7 +136,7 @@
         async function init() {
             var start_button = document.getElementById("web_btn");
             start_button.style.display = "none";
-            setTimeout(function(){vsbtn.style.display = "block"},5000);
+            setTimeout(function(){vsbtn.style.display = "flex"},5000);
             
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
