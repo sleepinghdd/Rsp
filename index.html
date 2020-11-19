@@ -6,7 +6,7 @@
     <title>가위바위보</title>
 </head>
 
-<body id="key_inp" onkeyup="">
+<body id="key_inp" onkeyup="key_check()">
     <h1 style="text-align: center;">가위 바위 보</h1>
     <h3>승리시 보상있음 #(SPACE)키를 누르면 시작됨#</h3>
 
@@ -143,7 +143,6 @@
         async function init() {
             var start_button = document.getElementById("web_btn");
             start_button.style.display = "none";
-            setTimeout(function(){vsbtn.onkeyup="key_check()"},5000);
             
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
