@@ -23,10 +23,6 @@
         <div class="fitem" id="random_Output"></div>
     </div>
     
-    <div style="display:flex;">
-        <button id ="vsbtn" type="button"  onclick="versus_start()" style="display:none; font-size:30px; padding:10px 10px; justify-content: center;">스타트</button>
-    </div>
-    
     <div class="fcontain2">
         <div>
             <button class="reward" id="reward_btn" type="button" onclick="print_reward()" style="display: none;">보상 뽑기</button>
@@ -147,7 +143,7 @@
         async function init() {
             var start_button = document.getElementById("web_btn");
             start_button.style.display = "none";
-            setTimeout(function(){vsbtn.onkeyup="key_check"},5000);
+            setTimeout(function(){vsbtn.onkeyup="key_check()"},5000);
             
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
