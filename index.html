@@ -15,11 +15,9 @@
     
     <div id="countDown" style="text-align: center;"></div>
     
-    <div class="fcontain" style="margin-left:10%">
+    <div class="fcontain" style="margin-left:50%">
         <div class="fitem" id="webcam-container" style="margin-left: 10%;"></div>
-        <div class="fitem" id="vs_text" style="font-size:30px; display: none;">
-            <div style="display:table-cell; vertical-align:middle; margin-top:35%" >vs</div>
-        </div>
+        <div class="fitem" id="vs_text" style="font-size:30px; display: none; margin-top="35%">vs</div>
         <div class="fitem" id="random_Output"></div>
     </div>
     
@@ -127,7 +125,7 @@
         }
 
         function versus_start(){
-            vsText.style.display = "table"
+            vsText.style.display = "block"
             reward_cls[0].style.display = "none"
             reward_cls[1].style.display = "none"
             rand_image_contain.innerHTML="<img src='./img/stay.jpg'>"
