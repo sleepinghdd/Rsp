@@ -34,7 +34,8 @@
         // 가위 0  바위 1  보 2
         const reward_count = 3;
         const URL = "./source/";
-
+        
+        var eventing==1;
         var prediction;
         let model, webcam, maxPredictions, labelContainer;
         var vsText = document.getElementById("vs_text");
@@ -52,7 +53,7 @@
 
         function key_check(){
             var key = event.keyCode
-            if(key==32) versus_start();
+            if(key==32 || eventing == 0) versus_start();
         }
 
         function print_reward(){
@@ -113,7 +114,7 @@
                 count_contain.innerHTML="졌음 ㅋ";
             }
             else alert("뭔가 에러남");
-            
+            eventing = 0;
         }
 
         function CountDown(){
@@ -139,7 +140,8 @@
         async function init() {
             var start_button = document.getElementById("web_btn");
             start_button.style.display = "none";
-          
+            eventing = 0;
+            
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
 
