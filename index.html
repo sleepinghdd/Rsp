@@ -125,7 +125,7 @@
             count_contain.innerHTML = count;
             setTimeout(function(){count--},200);
             if (count == 0){
-                compare();
+                setTimeout(compare(),1000);
             }
         }
 
