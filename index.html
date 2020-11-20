@@ -74,7 +74,7 @@
             var web_state = [Math.floor(Math.random()*3),Math.floor(Math.random()*3)];
 
             for(var i=0;i<3;i++){
-                if (img_state[i] > 0.75){
+                if (img_state[i] > 0.85){
                     user_state = i;
                     break;
                 }
@@ -177,13 +177,13 @@
                 img_state[i] = prediction[i].probability;
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                    if (prediction[0].probability > 0.75){
+                    if (prediction[0].probability > 0.85){
                         labelContainer.innerHTML="내가 내고있는 것: 가위"
                     }
-                    else if (prediction[1].probability > 0.75){
+                    else if (prediction[1].probability > 0.85){
                         labelContainer.innerHTML="내가 내고있는 것: 바위"
                     }
-                    else if (prediction[2].probability > 0.75){
+                    else if (prediction[2].probability > 0.85){
                         labelContainer.innerHTML="내가 내고있는 것: 보"
                     }
                     else labelContainer.innerHTML="특정불가"
