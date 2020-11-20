@@ -53,16 +53,20 @@
 
         function key_check(){
             var key = event.keyCode
-            if(key==32 && eventing == 0) versus_start();
+            if(key==32 && eventing == 0) {
+                eventing =1;
+                versus_start();
+            }
         }
 
         function print_reward(){
             reward_btn.disabled = "disabled";
             reward_btn.innerHTML = "이미 뽑음";
-            var resel = Math.floor(Math.random()*3);
-            if (resel==0) reward_desc.innerHTML = "보상 1번";
-            else if(resel==1) reward_desc.innerHTML ="보상2번";
-            else if(resel==2) reward_desc.innerHTML = "꽝 3번";
+            var resel = Math.floor(Math.random()*4);
+            if (resel==0) reward_desc.innerHTML = "사탕 1개";
+            else if(resel==1) reward_desc.innerHTML ="사탕 2개";
+            else if(resel==2) reward_desc.innerHTML = "꽝";
+            else if(resel==3) reward_desc.innerHTML = "꽝";
             else reward_desc.innerHTML = "뭔가 안됨";
         }
 
